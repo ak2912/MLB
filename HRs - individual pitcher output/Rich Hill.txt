@@ -1,0 +1,103 @@
+
+. tab pitchtype if pitcher=="Rich Hill" & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         36        2.69        2.69
+         CU |        530       39.58       42.27
+         EP |          2        0.15       42.42
+         FF |        458       34.20       76.62
+         FT |        198       14.79       91.41
+         IN |         21        1.57       92.98
+         SL |         94        7.02      100.00
+------------+-----------------------------------
+      Total |      1,339      100.00
+
+. tab pitchtype if pitcher=="Rich Hill" & playoffs==0 & seasonyear==2013
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          1        0.13        0.13
+         CU |        300       38.12       38.25
+         FF |        235       29.86       68.11
+         FT |        156       19.82       87.93
+         IN |         17        2.16       90.09
+         SL |         78        9.91      100.00
+------------+-----------------------------------
+      Total |        787      100.00
+
+. tab pitchtype if pitcher=="Rich Hill" & playoffs==0 & seasonyear==2015
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         35        8.06        8.06
+         CU |        183       42.17       50.23
+         EP |          2        0.46       50.69
+         FF |        201       46.31       97.00
+         FT |         13        3.00      100.00
+------------+-----------------------------------
+      Total |        434      100.00
+
+**Slider went away in 2015.  Two-seamer almost disappeared.  Increased reliance on 4-seamer.  A bit more change-up.
+
+. tab pitchtype if pitcher=="Rich Hill" & playoffs==0 & hr==1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CU |          2       40.00       40.00
+         FF |          2       40.00       80.00
+         FT |          1       20.00      100.00
+------------+-----------------------------------
+      Total |          5      100.00
+
+. sum hr hr_predicted_L_CU releasevelocity if  pitcher=="Rich Hill" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       134    .0149254    .1217093          0          1
+hr_pred~L_CU |       134    .0138435    .0157974   .0000861   .0908367
+releasevel~y |       134    74.53433    1.295458       70.7       77.9
+
+
+. sum hr hr_predicted_L_CU releasevelocity if  pitcher=="Rich Hill" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        74           0           0          0          0
+hr_pred~L_CU |        74    .0164966    .0183551   .0033566   .1117243
+releasevel~y |        74    74.22973    1.199855         71       77.6
+
+**Lucky to avoid HRs on the Curveball in 2015.
+
+sum hr hr_predicted_L_CH releasevelocity if  pitcher=="Rich Hill" & pitchtype=="CH" & (pitchresult=="SS"
+> |pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        15           0           0          0          0
+hr_pred~L_CH |        15    .0233613    .0222224   .0016867   .0767582
+releasevel~y |        15    83.75333    1.419188       81.5       86.2
+
+**Change up does not seem that great.
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Rich Hill" & pitchtype=="FF" & (pitchresult=="SS"
+> |pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        61           0           0          0          0
+hr_pred~L_FF |        61     .010033    .0066457   .0007655   .0371993
+releasevel~y |        61    91.74918    1.314993       88.5         94
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Rich Hill" & pitchtype=="FF" & (pitchresult=="SS"
+> |pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       106    .0188679    .1367049          0          1
+hr_pred~L_FF |       106    .0184333    .0093852    .001748   .0553396
+releasevel~y |       106    90.31792    1.017073       87.5         93
+
+**4-seamer is ~1.4 mph slower.  Seems to be much more hittable.
+
+**Rich Hill was signed for a cheap, low-risk contract by the A's.  But the data suggests he may be more vulnerable to the long ball in 2016.
