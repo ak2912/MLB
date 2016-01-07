@@ -1,0 +1,370 @@
+. tab pitchtype if pitcher=="Jake Arrieta" & playoffs==0 & seasonyear==2013
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         45        3.56        3.56
+         CU |        208       16.44       20.00
+         FC |         17        1.34       21.34
+         FF |        346       27.35       48.70
+         IN |          4        0.32       49.01
+         SI |        457       36.13       85.14
+         SL |        188       14.86      100.00
+------------+-----------------------------------
+      Total |      1,265      100.00
+
+. tab pitchtype if pitcher=="Jake Arrieta" & playoffs==0 & seasonyear==2014
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        136        5.63        5.63
+         CU |        428       17.72       23.34
+         FC |          1        0.04       23.39
+         FF |        542       22.43       45.82
+         IN |          5        0.21       46.03
+         SI |        600       24.83       70.86
+         SL |        702       29.06       99.92
+         UN |          2        0.08      100.00
+------------+-----------------------------------
+      Total |      2,416      100.00
+
+. tab pitchtype if pitcher=="Jake Arrieta" & playoffs==0 & seasonyear==2015
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        145        4.22        4.22
+         CU |        531       15.45       19.66
+         FA |         13        0.38       20.04
+         FF |        525       15.27       35.31
+         IN |          6        0.17       35.49
+         SI |      1,224       35.60       71.09
+         SL |        989       28.77       99.85
+         UN |          5        0.15      100.00
+------------+-----------------------------------
+      Total |      3,438      100.00
+**Slider use doubled from 2013 to 2014 (warning sign?).  Four-seamer use has been steadily declining.
+
+. tab pitchtype if pitcher=="Jake Arrieta" & playoffs==0 & seasonyear==2013 & hr==1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CU |          2       22.22       22.22
+         FF |          2       22.22       44.44
+         SI |          2       22.22       66.67
+         SL |          3       33.33      100.00
+------------+-----------------------------------
+      Total |          9      100.00
+
+. tab pitchtype if pitcher=="Jake Arrieta" & playoffs==0 & seasonyear==2014 & hr==1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          1       20.00       20.00
+         CU |          1       20.00       40.00
+         FF |          1       20.00       60.00
+         SL |          2       40.00      100.00
+------------+-----------------------------------
+      Total |          5      100.00
+
+. tab pitchtype if pitcher=="Jake Arrieta" & playoffs==0 & seasonyear==2015 & hr==1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CU |          3       30.00       30.00
+         FF |          2       20.00       50.00
+         SI |          2       20.00       70.00
+         SL |          3       30.00      100.00
+------------+-----------------------------------
+      Total |         10      100.00
+
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        30           0           0          0          0
+hr_pred~R_CH |        30    .0136592    .0131767   .0012817   .0460415
+releasevel~y |        30       86.61    1.013138       84.4       88.2
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        56    .0178571    .1336306          0          1
+hr_pred~R_CH |        56     .010115    .0111454   7.95e-06   .0622426
+releasevel~y |        56    87.00357    1.455268       83.2       90.5
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        69           0           0          0          0
+hr_pred~R_CH |        69    .0067176    .0063343    .000175   .0361976
+releasevel~y |        69    88.81594    1.101819       85.9         91
+
+**Arrieta's change appears to be getting better by the year.
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        90    .0222222    .1482314          0          1
+hr_pred~R_CU |        90    .0113937    .0139831   .0004538   .0742271
+releasevel~y |        90    80.57222     1.17617       78.7       84.1
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       184    .0054348     .073721          0          1
+hr_pred~R_CU |       184    .0079752     .010406   .0000232   .0532628
+releasevel~y |       184    79.25815    1.081457       76.1       81.7
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       239    .0125523    .1115653          0          1
+hr_pred~R_CU |       239    .0082428    .0123287   .0000948     .09707
+releasevel~y |       239    80.87071     1.33677       76.7       88.3
+
+**Curveball is outstanding!
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       124     .016129    .1264828          0          1
+hr_pred~R_FF |       124    .0140782    .0075956   .0038949   .0432279
+releasevel~y |       124    94.06855    1.130319       90.9       96.6
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       196     .005102    .0714286          0          1
+hr_pred~R_FF |       196    .0144956    .0078544   .0035283   .0583193
+releasevel~y |       196    93.58878    .9683592       90.4       95.8
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       198     .010101    .1002484          0          1
+hr_pred~R_FF |       198    .0128869    .0060981   .0017788   .0343723
+releasevel~y |       198     94.6596    1.132306       90.7       97.2
+
+**four-seamer in 2015 was the best yet... a full mph faster than 2014.
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       214    .0093458    .0964464          0          1
+hr_pred~R_SI |       214    .0123457    .0079621   .0020559   .0410178
+releasevel~y |       214    93.88692    .9854897       91.4       96.4
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       266           0           0          0          0
+hr_pred~R_SI |       266    .0123635    .0081701   .0005398    .058428
+releasevel~y |       266    93.57368    1.000973         90         96
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       525    .0038095    .0616624          0          1
+hr_pred~R_SI |       525    .0104283    .0071598   .0008337   .1049135
+releasevel~y |       525    94.64152    1.104376       89.8       97.7
+
+**Seems to be getting lucky a bit on the sinker... unless the data is not picking up something that accounts for his HR stinginess.
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SL" & (pitchresult=="
+> SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        94    .0319149     .176716          0          1
+hr_pred~R_SL |        94    .0111824    .0093636   .0002057   .0459251
+releasevel~y |        94    89.18191    1.712319       85.1       92.4
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SL" & (pitchresult=="
+> SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       401    .0049875    .0705341          0          1
+hr_pred~R_SL |       401     .009882    .0101467   .0001247   .0773537
+releasevel~y |       401    89.28055    1.507389       83.1       92.7
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SL" & (pitchresult=="
+> SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       585    .0051282    .0714888          0          1
+hr_pred~R_SL |       585    .0095101    .0100444   .0000372   .1125086
+releasevel~y |       585    90.35282     1.72455       83.9       93.9
+
+**Slider is outstanding!
+
+******Let's examine what happened to Arrieta in the playoffs...*********
+***Wild Card Game vs Pit***
+
+. tab pitchtype if pitcher=="Jake Arrieta" & gamestring=="gid_2015_10_07_chnmlb_pitmlb_1"
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CU |          9        7.96        7.96
+         FF |         28       24.78       32.74
+         SI |         32       28.32       61.06
+         SL |         44       38.94      100.00
+------------+-----------------------------------
+      Total |        113      100.00
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_07_chnmlb_pitmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |         7           0           0          0          0
+hr_pred~R_CU |         7    .0074978    .0082577   .0009684   .0252145
+releasevel~y |         7    81.28571    1.348368       79.4       82.8
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_07_chnmlb_pitmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        10           0           0          0          0
+hr_pred~R_FF |        10    .0117266    .0055753   .0059568   .0206986
+releasevel~y |        10       94.46    .9347609       93.1         96
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_07_chnmlb_pitmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        17           0           0          0          0
+hr_pred~R_SI |        17    .0126383    .0064762   .0035612   .0285214
+releasevel~y |        17        94.7    .9327383       92.9       96.3
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_07_chnmlb_pitmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        22           0           0          0          0
+hr_pred~R_SL |        22    .0053703     .003764   .0002189   .0138579
+releasevel~y |        22       89.05    1.820714       86.1       92.5
+
+**Everything seems ok with the WC game.  Arreita pitched a shutout gem.
+
+
+**************10/12 vs STL NLDC********************
+
+. tab pitchtype if pitcher=="Jake Arrieta" & gamestring=="gid_2015_10_12_slnmlb_chnmlb_1"
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          1        1.03        1.03
+         CU |          8        8.25        9.28
+         FF |         11       11.34       20.62
+         SI |         49       50.52       71.13
+         SL |         28       28.87      100.00
+------------+-----------------------------------
+      Total |         97      100.00
+
+**Compared to the last game, relied on the sinker alot more.
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_12_slnmlb_chnmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |         4         .25          .5          0          1
+hr_pred~R_CU |         4     .012931    .0189761   .0010168   .0412743
+releasevel~y |         4      79.525    .8995368       78.4       80.3
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_12_slnmlb_chnmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |         6           0           0          0          0
+hr_pred~R_FF |         6    .0121914    .0034045   .0071304   .0165822
+releasevel~y |         6    94.48333    .8704407       93.1       95.4
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_12_slnmlb_chnmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        19           0           0          0          0
+hr_pred~R_SI |        19    .0103872    .0112302   .0026288   .0512231
+releasevel~y |        19    94.42105     .688459       93.3       95.3
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_12_slnmlb_chnmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        19           0           0          0          0
+hr_pred~R_SL |        19    .0063695    .0060621   .0002438    .022734
+releasevel~y |        19    89.05789    .9197321       87.6       90.8
+
+**Mistake on a curveball, but otherwise data looks good.
+
+***********10/18 NLCS vs Mets*******************
+
+. tab pitchtype if pitcher=="Jake Arrieta" & gamestring=="gid_2015_10_18_chnmlb_nynmlb_1"
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         10       10.64       10.64
+         CU |          9        9.57       20.21
+         FF |         18       19.15       39.36
+         IN |          4        4.26       43.62
+         SI |         29       30.85       74.47
+         SL |         24       25.53      100.00
+------------+-----------------------------------
+      Total |         94      100.00
+
+**Some noteable stats from this start.  After throwing a grand total of one change up in the previous two starts combined, Arrieta threw 10 change ups against the Mets.  He also through 4 intentional balls - after throwing 6 all season.
+
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_18_chnmlb_nynmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |         2           0           0          0          0
+hr_pred~R_CH |         2    .0010199    .0007123   .0005162   .0015236
+releasevel~y |         2        88.2    .7071068       87.7       88.7
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_18_chnmlb_nynmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |         2          .5    .7071068          0          1
+hr_pred~R_CU |         2    .0017843    .0006752   .0013069   .0022617
+releasevel~y |         2        79.7    .1414246       79.6       79.8
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_18_chnmlb_nynmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |         6           0           0          0          0
+hr_pred~R_FF |         6    .0156063    .0055458   .0080956   .0233032
+releasevel~y |         6    93.21667    .9020341       91.9       94.6
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_18_chnmlb_nynmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        10           0           0          0          0
+hr_pred~R_SI |        10    .0093763     .004143   .0019215   .0170069
+releasevel~y |        10       93.35    .7546157       92.2       94.2
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Jake Arrieta" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & gamestring=="gid_2015_10_18_chnmlb_nynmlb_1"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        15           0           0          0          0
+hr_pred~R_SL |        15    .0112176    .0092072   .0012427   .0342106
+releasevel~y |        15    87.60667    .9624873       85.7       89.3
+
+**Arrieta was victimized by the curveball again.  His four-seamer and slider were noticably worse this start as well, with reduced velocity.  For Cubs fans, this was hopefully an aberration and a one-off as the result of a long season and a career-high in IP.

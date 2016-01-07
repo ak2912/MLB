@@ -1,0 +1,175 @@
+. tab pitchtype if pitcher=="Brett Anderson" & seasonyear==2013 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         34        4.43        4.43
+         CU |          1        0.13        4.56
+         FF |        237       30.86       35.42
+         FT |        181       23.57       58.98
+         IN |          4        0.52       59.51
+         KC |         56        7.29       66.80
+         SL |        255       33.20      100.00
+------------+-----------------------------------
+      Total |        768      100.00
+
+. tab pitchtype if pitcher=="Brett Anderson" & seasonyear==2014 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         40        6.03        6.03
+         FF |        181       27.30       33.33
+         FT |        146       22.02       55.35
+         IN |          9        1.36       56.71
+         KC |         67       10.11       66.82
+         SL |        220       33.18      100.00
+------------+-----------------------------------
+      Total |        663      100.00
+
+. tab pitchtype if pitcher=="Brett Anderson" & seasonyear==2015 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        251        9.24        9.24
+         FF |        629       23.16       32.40
+         FT |        797       29.34       61.75
+         IN |          8        0.29       62.04
+         KC |        308       11.34       73.38
+         SL |        721       26.55       99.93
+         UN |          2        0.07      100.00
+------------+-----------------------------------
+      Total |      2,716      100.00
+
+
+. tab pitchtype if pitcher=="Brett Anderson" & seasonyear==2013 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         FF |          4       80.00       80.00
+         SL |          1       20.00      100.00
+------------+-----------------------------------
+      Total |          5      100.00
+
+. tab pitchtype if pitcher=="Brett Anderson" & seasonyear==2014 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         SL |          1      100.00      100.00
+------------+-----------------------------------
+      Total |          1      100.00
+
+. tab pitchtype if pitcher=="Brett Anderson" & seasonyear==2015 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          4       22.22       22.22
+         FF |          2       11.11       33.33
+         FT |          5       27.78       61.11
+         KC |          2       11.11       72.22
+         SL |          5       27.78      100.00
+------------+-----------------------------------
+      Total |         18      100.00
+
+
+**2013**
+
+. sum hr hr_predicted_L_CH releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        15           0           0          0          0
+hr_pred~L_CH |        15    .0187053       .0133   .0039872    .049738
+releasevel~y |        15    83.84667    1.781598       80.9       86.3
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        94    .0425532    .2029298          0          1
+hr_pred~L_FF |        94    .0162588     .009202   .0022002   .0652234
+releasevel~y |        94    92.16915    1.724088       87.6       95.8
+
+. sum hr hr_predicted_L_FT releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="FT" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        77           0           0          0          0
+hr_pred~L_FT |        77    .0120729    .0106162   .0005966   .0508079
+releasevel~y |        77    91.29221    1.351098       87.9       94.1
+
+. sum hr hr_predicted_L_SL releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2013 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       129    .0077519    .0880451          0          1
+hr_pred~L_SL |       129    .0081422    .0055273   .0002858     .02836
+releasevel~y |       129    82.37674     1.40854       78.4       85.6
+
+**2014**
+
+. sum hr hr_predicted_L_CH releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        19           0           0          0          0
+hr_pred~L_CH |        19     .017317    .0143376   .0009677   .0486121
+releasevel~y |        19    82.64737    1.182919       80.2         85
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        75           0           0          0          0
+hr_pred~L_FF |        75    .0169353    .0089556   .0039256   .0487829
+releasevel~y |        75      90.548    1.398392       86.8       93.5
+
+. sum hr hr_predicted_L_FT releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="FT" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        58           0           0          0          0
+hr_pred~L_FT |        58    .0095846    .0078216   .0008411   .0448683
+releasevel~y |        58    89.53966    1.451308       86.5       92.9
+
+. sum hr hr_predicted_L_SL releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       119    .0084034    .0916698          0          1
+hr_pred~L_SL |       119    .0092385    .0061964   .0010485   .0372995
+releasevel~y |       119    80.61008    1.186249         78       83.2
+
+**2015**
+
+. sum hr hr_predicted_L_CH releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       116    .0344828    .1832572          0          1
+hr_pred~L_CH |       116    .0111064    .0092604   .0008516   .0400067
+releasevel~y |       116    83.38793    1.179768       79.4       85.6
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       262    .0076336    .0872029          0          1
+hr_pred~L_FF |       262    .0137899    .0068255   .0007084   .0529191
+releasevel~y |       262    91.14771    1.227672       87.4       94.4
+
+. sum hr hr_predicted_L_FT releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="FT" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       352    .0142045    .1185018          0          1
+hr_pred~L_FT |       352    .0087534    .0075272   .0003409   .0462083
+releasevel~y |       352    90.47358    1.381032       85.2         94
+
+. sum hr hr_predicted_L_SL releasevelocity if  pitcher=="Brett Anderson" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       413    .0121065    .1094943          0          1
+hr_pred~L_SL |       413    .0100243    .0071432   .0003953   .0550456
+releasevel~y |       413    81.98499    1.262478       77.2       85.4
+
+**By predicted HR values, all his pitches seem to be above average.

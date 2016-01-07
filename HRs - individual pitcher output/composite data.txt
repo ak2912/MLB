@@ -1,0 +1,143 @@
+. tab pitchtype
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         AB |         10        0.00        0.00
+         CH |    219,333       10.21       10.21
+         CU |    171,636        7.99       18.20
+         EP |      1,053        0.05       18.25
+         FA |      2,703        0.13       18.38
+         FC |    117,441        5.47       23.85
+         FF |    750,295       34.93       58.78
+         FO |      1,521        0.07       58.85
+         FS |     32,664        1.52       60.37
+         FT |    276,712       12.88       73.25
+         IN |      9,996        0.47       73.72
+         KC |     42,300        1.97       75.69
+         KN |     10,129        0.47       76.16
+         PO |        881        0.04       76.20
+         SC |        126        0.01       76.21
+         SI |    191,538        8.92       85.13
+         SL |    315,430       14.69       99.81
+         UN |      4,059        0.19      100.00
+------------+-----------------------------------
+      Total |  2,147,827      100.00
+
+**all pitch data across 2013-2015 seasons
+
+***RHP data, by pitch type***
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     74717    .0139861    .1174337          0          1
+hr_pred~R_CH |     74682    .0140243    .0143783   7.95e-06    .252219
+releasevel~y |     74717    83.64359    3.301293       55.6       94.9
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     50134    .0121275    .1094562          0          1
+hr_pred~R_CU |     50132    .0121595    .0145409   5.02e-08    .765629
+releasevel~y |     50134    78.11084    3.922553       45.5       98.3
+
+. sum hr hr_predicted_R_FC releasevelocity if  pitchtype=="FC" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     45585     .013952    .1172928          0          1
+hr_pred~R_FC |     45585    .0139707     .011125   .0000234   .2427643
+releasevel~y |     45585     88.6196     3.13193       76.5       99.6
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |    255694    .0157141    .1243673          0          1
+hr_pred~R_FF |    255694    .0157174    .0084625   .0000966   .1100951
+releasevel~y |    255694     92.7771    2.689049       78.3      102.8
+
+. sum hr hr_predicted_R_FT releasevelocity if  pitchtype=="FT" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     84520    .0136417    .1159992          0          1
+hr_pred~R_FT |     84520    .0136526    .0106793   2.68e-14    .145444
+releasevel~y |     84520    92.10069    2.687807       77.7      101.4
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     62725    .0135193    .1154849          0          1
+hr_pred~R_SI |     62725    .0135308    .0116345   .0000224   .2597746
+releasevel~y |     62725    91.08814    2.659379       77.9      100.6
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="R"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |    113404    .0132182    .1142087          0          1
+hr_pred~R_SL |    113404    .0132506    .0129369   2.92e-11   .3577174
+releasevel~y |    113404    84.45039    3.110338       46.6       97.3
+
+
+***LHP data, by pitch type****
+
+. sum hr hr_predicted_L_CH releasevelocity if  pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     39216    .0134384     .115144          0          1
+hr_pred~L_CH |     39192    .0134792    .0147904   .0000114   .2272895
+releasevel~y |     39216    82.06587    3.172254         65       93.9
+
+. sum hr hr_predicted_L_CU releasevelocity if  pitchtype=="CU" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     18581    .0128626    .1126847          0          1
+hr_pred~L_CU |     18580    .0128866     .014043   1.36e-07   .2883464
+releasevel~y |     18581    76.31482    3.604968       45.5       87.8
+
+. sum hr hr_predicted_L_FC releasevelocity if  pitchtype=="FC" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     12523    .0124571    .1109184          0          1
+hr_pred~L_FC |     12513    .0124777     .009482   6.16e-06   .1139002
+releasevel~y |     12523    86.39463    2.903067       70.7       95.4
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     91376    .0148507     .120956          0          1
+hr_pred~L_FF |     91376    .0148503    .0086582   6.90e-07   .0998202
+releasevel~y |     91376    91.43537    2.726729       79.2      103.8
+
+. sum hr hr_predicted_L_FT releasevelocity if  pitchtype=="FT" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     40962    .0134271    .1150961          0          1
+hr_pred~L_FT |     40962    .0134416    .0105831   2.20e-06   .1413983
+releasevel~y |     40962    90.95677    2.957354       72.9      100.3
+
+. sum hr hr_predicted_L_SI releasevelocity if  pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     23319     .012865    .1126946          0          1
+hr_pred~L_SI |     23319    .0128758    .0108381   .0002539   .1983511
+releasevel~y |     23319     90.6467    2.962072       79.5        100
+
+. sum hr hr_predicted_L_SL releasevelocity if  pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP") & itp_hr~=1 & pitcherhand=="L"
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |     40589    .0116288    .1072092          0          1
+hr_pred~L_SL |     40584    .0116536    .0096412   4.90e-06   .1334335
+releasevel~y |     40589     83.0018    3.267193       68.3       95.6

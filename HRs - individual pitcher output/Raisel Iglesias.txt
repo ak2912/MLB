@@ -1,0 +1,59 @@
+. tab pitchtype if pitcher=="Raisel Iglesias" & seasonyear==2015 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        177       11.30       11.30
+         CU |         10        0.64       11.94
+         FC |          6        0.38       12.32
+         FF |        302       19.28       31.61
+         FT |          5        0.32       31.93
+         PO |          1        0.06       31.99
+         SI |        621       39.66       71.65
+         SL |        442       28.22       99.87
+         UN |          2        0.13      100.00
+------------+-----------------------------------
+      Total |      1,566      100.00
+
+. tab pitchtype if pitcher=="Raisel Iglesias" & seasonyear==2015 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         FF |          2       18.18       18.18
+         SI |          4       36.36       54.55
+         SL |          5       45.45      100.00
+------------+-----------------------------------
+      Total |         11      100.00
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Raisel Iglesias" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        90           0           0          0          0
+hr_pred~R_CH |        90    .0129492    .0127243   .0010134   .0739139
+releasevel~y |        90          85    1.262155       81.2       87.1
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Raisel Iglesias" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       137    .0145985    .1203794          0          1
+hr_pred~R_FF |       137    .0174716    .0084582   .0036611   .0423443
+releasevel~y |       137    92.20657    1.681657       87.3       95.9
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Raisel Iglesias" & pitchtype=="SI" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       287    .0139373    .1174355          0          1
+hr_pred~R_SI |       287    .0148048    .0143089   .0003742   .1220795
+releasevel~y |       287     91.3108    2.012406       83.9       95.7
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Raisel Iglesias" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       226    .0221239     .147413          0          1
+hr_pred~R_SL |       226     .014058    .0144296    .000037   .0927083
+releasevel~y |       226    82.67611    1.864941       76.8       87.3
+
+**Not great.  Four-seamer seems especially vulnerable.  Stay away?

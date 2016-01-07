@@ -1,0 +1,106 @@
+. tab pitchtype if pitcher=="Drew Hutchison" & seasonyear==2014 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        381       12.49       12.49
+         FA |          4        0.13       12.62
+         FF |      1,794       58.80       71.42
+         FT |        164        5.38       76.79
+         IN |          1        0.03       76.83
+         PO |          1        0.03       76.86
+         SL |        705       23.11       99.97
+         UN |          1        0.03      100.00
+------------+-----------------------------------
+      Total |      3,051      100.00
+
+. tab pitchtype if pitcher=="Drew Hutchison" & seasonyear==2015 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        281       11.19       11.19
+         FA |         11        0.44       11.63
+         FF |      1,622       64.60       76.22
+         FT |         14        0.56       76.78
+         PO |          2        0.08       76.86
+         SL |        576       22.94       99.80
+         UN |          5        0.20      100.00
+------------+-----------------------------------
+      Total |      2,511      100.00
+
+. tab pitchtype if pitcher=="Drew Hutchison" & seasonyear==2014 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          7       30.43       30.43
+         FF |         11       47.83       78.26
+         FT |          2        8.70       86.96
+         SL |          3       13.04      100.00
+------------+-----------------------------------
+      Total |         23      100.00
+
+. tab pitchtype if pitcher=="Drew Hutchison" & seasonyear==2015 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         FF |         19       86.36       86.36
+         SL |          3       13.64      100.00
+------------+-----------------------------------
+      Total |         22      100.00
+
+**Pitch mix stayed relatively consistent from 2014 to 2015 but the HR outcomes really changed!
+
+**2014**
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Drew Hutchison" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       194    .0360825    .1869779          0          1
+hr_pred~R_CH |       193    .0117648    .0118954   .0003815   .0796931
+releasevel~y |       194    85.25773    1.415886       81.7       88.8
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Drew Hutchison" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       892    .0123318    .1104239          0          1
+hr_pred~R_FF |       892     .016244    .0077963   .0003913     .05197
+releasevel~y |       892     92.3407    1.329782       87.8       95.9
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Drew Hutchison" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       340    .0088235    .0936561          0          1
+hr_pred~R_SL |       340    .0104188    .0102874   .0000221   .0789463
+releasevel~y |       340    84.46794    1.804714       80.2       88.5
+
+**Extremely unluckly with the changeup... a bit lucky with the other pitches
+
+**2015**
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Drew Hutchison" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       135           0           0          0          0
+hr_pred~R_CH |       135     .009084    .0084386   .0003142   .0560449
+releasevel~y |       135    85.59407      1.1945         82       88.9
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Drew Hutchison" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       809    .0234858    .1515341          0          1
+hr_pred~R_FF |       809     .016543    .0075178   .0025629   .0468199
+releasevel~y |       809    92.48344    1.283125       87.7         96
+
+. sum hr hr_predicted_R_SL releasevelocity if  pitcher=="Drew Hutchison" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       255    .0117647    .1080374          0          1
+hr_pred~R_SL |       255    .0108911    .0107671   .0000713   .0780364
+releasevel~y |       255    84.39765     1.71193       78.9       88.9
+
+**Unlucky with the four-seamer in 2015.  That said, the four-seamer is below average... can he lean more on his other pitches?

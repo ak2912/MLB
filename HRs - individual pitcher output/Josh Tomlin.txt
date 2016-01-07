@@ -1,0 +1,144 @@
+. tab pitchtype if pitcher=="Josh Tomlin" & seasonyear==2014 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         80        4.66        4.66
+         CU |        254       14.81       19.48
+         FC |        528       30.79       50.26
+         FF |        753       43.91       94.17
+         IN |         12        0.70       94.87
+         SI |         87        5.07       99.94
+         UN |          1        0.06      100.00
+------------+-----------------------------------
+      Total |      1,715      100.00
+
+. tab pitchtype if pitcher=="Josh Tomlin" & seasonyear==2015 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |         75        7.90        7.90
+         CU |        124       13.07       20.97
+         FC |        265       27.92       48.89
+         FF |        456       48.05       96.94
+         SI |         28        2.95       99.89
+         UN |          1        0.11      100.00
+------------+-----------------------------------
+      Total |        949      100.00
+
+. tab pitchtype if pitcher=="Josh Tomlin" & seasonyear==2014 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          1        5.56        5.56
+         CU |          3       16.67       22.22
+         FC |          4       22.22       44.44
+         FF |          9       50.00       94.44
+         SI |          1        5.56      100.00
+------------+-----------------------------------
+      Total |         18      100.00
+
+. tab pitchtype if pitcher=="Josh Tomlin" & seasonyear==2015 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          1        7.69        7.69
+         FC |          5       38.46       46.15
+         FF |          7       53.85      100.00
+------------+-----------------------------------
+      Total |         13      100.00
+
+**2014**
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="CH" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        47    .0212766     .145865          0          1
+hr_pred~R_CH |        47    .0165874    .0134727    .001535   .0613929
+releasevel~y |        47    81.27021    1.240602       78.9       83.4
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="CU" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       127     .023622      .15247          0          1
+hr_pred~R_CU |       127    .0129581     .014811   .0001305   .0912042
+releasevel~y |       127    76.01102    1.372938       70.5       78.8
+
+. sum hr hr_predicted_R_FC releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="FC" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       322    .0124224    .1109336          0          1
+hr_pred~R_FC |       322     .012155    .0086264   .0007032   .0500712
+releasevel~y |       322    85.49814    1.195994       81.7       89.3
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="FF" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       302    .0298013    .1703211          0          1
+hr_pred~R_FF |       302    .0193221     .009049   .0033247   .0589316
+releasevel~y |       302    89.08907    1.163415       85.4       92.1
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="SI" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2014 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        34    .0294118    .1714986          0          1
+hr_pred~R_SI |        34    .0178143    .0179735   .0014234   .0817807
+releasevel~y |        34    86.41471    2.862202       81.1       90.5
+
+**2015**
+
+. sum hr hr_predicted_R_CH releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="CH" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        34    .0294118    .1714986          0          1
+hr_pred~R_CH |        34    .0168111    .0163604   .0008889   .0625381
+releasevel~y |        34    82.34118    1.971327       78.8         86
+
+. sum hr hr_predicted_R_CU releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="CU" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        69           0           0          0          0
+hr_pred~R_CU |        69    .0145573    .0132898    .001203    .063031
+releasevel~y |        69        75.2    1.794764       71.5       79.3
+
+. sum hr hr_predicted_R_FC releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="FC" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       146    .0342466    .1824879          0          1
+hr_pred~R_FC |       146    .0167498    .0111299   .0004844   .0831279
+releasevel~y |       146    84.54589    1.426407       80.8       87.5
+
+. sum hr hr_predicted_R_FF releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="FF" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       205    .0341463    .1820495          0          1
+hr_pred~R_FF |       205    .0226304    .0108791    .004671   .0609183
+releasevel~y |       205    88.78683    1.309532       85.6       91.9
+
+. sum hr hr_predicted_R_SI releasevelocity if  pitcher=="Josh Tomlin" & pitchtype=="SI" & (pitchresult=="S
+> S"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |        10           0           0          0          0
+hr_pred~R_SI |        10    .0238404    .0119551    .013826    .049431
+releasevel~y |        10       87.48    1.659182       85.8       90.5
+
+**Tomlin's four-seamer is really, really homer-prone!  Be careful with him.

@@ -1,0 +1,47 @@
+. tab pitchtype if pitcher=="Adam Conley" & playoffs==0 & seasonyear==2015
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        209       18.97       18.97
+         FF |        711       64.52       83.48
+         FT |         15        1.36       84.85
+         IN |          1        0.09       84.94
+         SL |        166       15.06      100.00
+------------+-----------------------------------
+      Total |      1,102      100.00
+
+. tab pitchtype if pitcher=="Adam Conley" & playoffs==0 & seasonyear==2015 & hr==1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          3       42.86       42.86
+         FF |          3       42.86       85.71
+         SL |          1       14.29      100.00
+------------+-----------------------------------
+      Total |          7      100.00
+
+. sum hr hr_predicted_L_CH releasevelocity if  pitcher=="Adam Conley" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       121    .0247934    .1561415          0          1
+hr_pred~L_CH |       121    .0139758    .0150645   .0000833   .1028201
+releasevel~y |       121    83.61983      1.3501       80.1       87.2
+
+. sum hr hr_predicted_L_SL releasevelocity if  pitcher=="Adam Conley" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       100         .01          .1          0          1
+hr_pred~L_SL |       100    .0090536    .0062748   .0001603   .0281605
+releasevel~y |       100      84.799    1.362669       80.7       87.9
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Adam Conley" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       326    .0092025    .0956338          0          1
+hr_pred~L_FF |       326    .0157576    .0088258   .0010512   .0517943
+releasevel~y |       326    91.49356    1.783287       87.8       96.4
+
+**Slider is good.  The other pitches seem to be below average.

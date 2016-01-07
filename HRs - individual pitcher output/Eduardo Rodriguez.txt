@@ -1,0 +1,48 @@
+. tab pitchtype if pitcher=="Eduardo Rodriguez" & seasonyear==2015 & playoffs==0
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |        355       17.67       17.67
+         FA |         38        1.89       19.56
+         FF |      1,348       67.10       86.66
+         FT |         29        1.44       88.10
+         IN |          4        0.20       88.30
+         SL |        235       11.70      100.00
+------------+-----------------------------------
+      Total |      2,009      100.00
+
+. tab pitchtype if pitcher=="Eduardo Rodriguez" & seasonyear==2015 & playoffs==0 & hr==1 & itp_hr~=1
+
+  pitchType |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         CH |          3       23.08       23.08
+         FF |          7       53.85       76.92
+         SL |          3       23.08      100.00
+------------+-----------------------------------
+      Total |         13      100.00
+
+. sum hr hr_predicted_L_CH releasevelocity if  pitcher=="Eduardo Rodriguez" & pitchtype=="CH" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       202    .0148515    .1212589          0          1
+hr_pred~L_CH |       202    .0121447    .0113381   .0005027   .0651845
+releasevel~y |       202    86.79901    1.335135       83.3       90.3
+
+. sum hr hr_predicted_L_FF releasevelocity if  pitcher=="Eduardo Rodriguez" & pitchtype=="FF" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       592    .0118243    .1081863          0          1
+hr_pred~L_FF |       592    .0125833    .0075684   .0014729   .0512975
+releasevel~y |       592    94.06706    1.283283       88.3         97
+
+. sum hr hr_predicted_L_SL releasevelocity if  pitcher=="Eduardo Rodriguez" & pitchtype=="SL" & (pitchresult=="SS"|pitchresult=="F"|pitchresult=="FT"| pitchresult=="IP")& seasonyear==2015 & playoffs==0 & itp_hr~=1
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+          hr |       119    .0252101    .1574255          0          1
+hr_pred~L_SL |       119    .0115429    .0076996   .0001654   .0409295
+releasevel~y |       119    85.89832    1.578563       80.8       90.4
+
+**Excellent HR predicted rates.  Unlucky with his slider.
